@@ -18,7 +18,7 @@ let CreateDateTable = (StartDate as date, EndDate as date, optional Culture as n
     InsertWeekEnding = Table.AddColumn(InsertDayName, "WeekEnding", each Date.EndOfWeek([Date]), type date)   
   in
     InsertWeekEnding,
-    InvokedCreateDateTable = CreateDateTable(#date(2010, 1, 1), #date(2020, 12, 31), null),
+    InvokedCreateDateTable = CreateDateTable(#date(2023, 1, 1), #date(2023, 12, 31), null),
     #"Changed Type" = Table.TransformColumnTypes(InvokedCreateDateTable,{{"MonthOfYear", Int64.Type}, {"QuarterOfYear", Int64.Type}, {"DayOfMonth", Int64.Type}, {"DateInt", Int64.Type}}),
     #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"Date", "DATE"}, {"Year", "YEAR"}, {"MonthName", "Month"}})
 in
